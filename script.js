@@ -1,15 +1,19 @@
+/*
+The main class in this script is the Calculator, which handles all the functionality
+of the calculator (obviously). 
+*/
+
 class Calculator {
     constructor(prev_text_elem, curr_text_elem) {
         this.prev_text_elem = prev_text_elem;
         this.curr_text_elem = curr_text_elem;
-        this.operation = undefined;
         this.clear();
     }
 
     // clear the current text
     clear() {
-        this.prev_num = '';
-        this.curr_num = '';
+        this.currentOperand = '';
+        this.previousOperand = '';
         this.operation = undefined;
     }
 
@@ -20,7 +24,7 @@ class Calculator {
 
     // add a number to the beginning of the curr_text_elem string
     appendNumber(number) {
-
+        this.currentOperand = number;
     }
 
     // Set the operation for the calculation
@@ -34,7 +38,7 @@ class Calculator {
     }
 
     updateDisplay() {
-        this.curr_text_elem.innerText = this.curr_text_elem
+        this.curr_text_elem.innerText = this.currentOperand
     }
 
 }
@@ -47,11 +51,11 @@ const clear_button = document.querySelector('[data-clear]');
 const prev_text_elem = document.querySelector('[data-prev]');
 const curr_text_elem = document.querySelector('[data-curr]');
 
-const calc = new Calculator(prev_text_elem, curr_text_elem);
+const calculator = new Calculator(prev_text_elem, curr_text_elem);
 
 number_buttons.forEach(button => {
     button.addEventListener('click', () => {
-        calc.appendNumber(button.innerText);
-        calc.updateDisplay();
+        calculator.appendNumber(button.innerText);
+        calculator.updateDisplay();
     })
 })
