@@ -19,7 +19,7 @@ class Calculator {
 
     // delete a single number from current text
     delete() {
-        this.curr_text_elem[-1] == null;
+        this.currentOperand = this.currentOperand.toString().slice(0, -1)
     }
 
     // add a number to the beginning of the curr_text_elem string
